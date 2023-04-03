@@ -1,11 +1,11 @@
 import BaseRoutes from "./BaseRoutes";
 import AuthController from "../controllers/AuthController";
-import { auth } from "../middlewares/AuthMiddleware";
+import validate from "../middlewares/AuthValidator";
 
 class AuthRoutes extends BaseRoutes {
   public routes(): void {
-    this.router.post("/register", auth, AuthController.register);
-    this.router.post("/login", AuthController.login);
+    this.router.post("/register", validate, AuthController.register);
+    this.router.post("/login", validate, AuthController.login);
   }
 }
 

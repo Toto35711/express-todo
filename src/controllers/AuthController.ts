@@ -14,9 +14,16 @@ class AuthController {
     return res.send(createdUser);
   };
 
-  login(req: Request, res: Response): Response {
-    return res.send("create: 200!");
-  }
+  login = async (req: Request, res: Response): Promise<Response> => {
+    // cari data user by username
+    const { username, password } = req.body;
+    const user = await db.user.findOne({
+      where: { username },
+    });
+    // check password
+    // generate token
+    return res.send(user);
+  };
 }
 
 export default new AuthController();
