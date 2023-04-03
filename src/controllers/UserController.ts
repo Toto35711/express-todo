@@ -7,7 +7,7 @@ let data: any[] = [
   { id: 3, name: "King", power: "500" },
   { id: 4, name: "Ace", power: "500" },
 ];
-class UserController {
+class UserController implements IController {
   constructor() {}
 
   index(req: Request, res: Response): Response {
