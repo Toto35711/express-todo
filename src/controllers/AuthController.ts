@@ -39,6 +39,10 @@ class AuthController {
     const token = Authentication.token(user.id, user.username, user.password);
     return res.send({ token });
   };
+
+  profile = (req: Request, res: Response): Response => {
+    return res.send(req.app.locals.credential);
+  };
 }
 
 export default new AuthController();
