@@ -8,6 +8,7 @@ import cors from "cors";
 // routers
 import UserRoutes from "./routers/UserRoutes";
 import AuthRoutes from "./routers/AuthRoutes";
+import { config as dotenv } from "dotenv";
 
 class App {
   public app: Application;
@@ -16,6 +17,7 @@ class App {
     this.app = express();
     this.plugins();
     this.routes();
+    dotenv();
   }
 
   protected plugins(): void {
@@ -41,4 +43,5 @@ const app: Application = new App().app;
 
 app.listen(port, () => {
   console.log("app is running in port: ", port);
+  // console.log(process.env.DB_HOST, "DB_HOST");
 });
