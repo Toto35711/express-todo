@@ -4,8 +4,8 @@ import { auth } from "../middlewares/AuthMiddleware";
 
 class AuthRoutes extends BaseRoutes {
   public routes(): void {
-    this.router.post("/register", auth, AuthController.index);
-    this.router.post("/login", AuthController.create);
+    this.router.post("/register", auth, AuthController.register);
+    this.router.post("/login", AuthController.login);
   }
 }
 
