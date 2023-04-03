@@ -30,7 +30,7 @@ class App {
       res.send("Hello world!");
     });
 
-    this.app.use("/users", UserRoutes);
+    this.app.use("/api/v1/users", UserRoutes);
   }
 }
 
