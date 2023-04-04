@@ -8,8 +8,39 @@ import cors from "cors";
 // routers
 import UserRoutes from "./routers/UserRoutes";
 import AuthRoutes from "./routers/AuthRoutes";
-import { config as dotenv } from "dotenv";
 import TodoRoutes from "./routers/TodoRoutes";
+
+import { config as dotenv } from "dotenv";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+
+const options: swaggerJsdoc.Options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "REST API Docs",
+      version: "1.0.0",
+    },
+    components: {
+      securitySchemas: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
+  },
+  servers: [{ url: "http://localhost:8080" }],
+  apis: ["../src/routers/*.ts"],
+};
+
+const swaggerSpec = swaggerJsdoc(options);
 
 class App {
   public app: Application;
@@ -22,6 +53,7 @@ class App {
   }
 
   protected plugins(): void {
+    this.app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     this.app.use(bodyParser.json());
     this.app.use(morgan("dev"));
     this.app.use(compression());
@@ -34,6 +66,12 @@ class App {
       res.send("Hello world!");
     });
 
+    /**
+     * @swagger
+     * users
+     * get:
+     *   description: use to request
+     */
     this.app.use("/api/v1/users", UserRoutes);
     this.app.use("/api/v1/auth", AuthRoutes);
     this.app.use("/api/v1/todos", TodoRoutes);
