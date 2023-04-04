@@ -20,9 +20,9 @@ export const auth = (
     if (credential) {
       req.app.locals.credential = credential;
       next();
+    } else {
+      return res.send("token invalid");
     }
-
-    return res.send("token invalid");
   } catch (error) {
     return res.send(error);
   }
