@@ -15,57 +15,45 @@ class UserService {
   }
 
   getAll = async () => {
-    const todos = await db.todo.findAll({
-      where: { user_id: this.credential.id },
-      attributes: ["id", "description"],
+    const users = await db.user.findAll({
+      attributes: ["id", "username"],
     });
-    return todos;
-  };
-
-  store = async () => {
-    const { description } = this.body;
-
-    const todo = await db.todo.create({
-      user_id: this.credential.id,
-      description,
-    });
-
-    return todo;
+    return users;
   };
 
   getOne = async () => {
     const { id } = this.params;
 
-    const todo = await db.todo.findOne({
-      where: { id, user_id: this.credential.id },
-      attributes: ["id", "description"],
+    const user = await db.user.findOne({
+      where: { id },
+      attributes: ["id", "username"],
     });
 
-    return todo;
+    return user;
   };
 
   update = async () => {
     const { id } = this.params;
-    const { description } = this.body;
+    const { username } = this.body;
 
-    const todo = await db.todo.update(
-      { description },
+    const user = await db.user.update(
+      { username },
       {
-        where: { id, user_id: this.credential.id },
+        where: { id },
       }
     );
 
-    return todo;
+    return user;
   };
 
   delete = async () => {
     const { id } = this.params;
 
-    const todo = await db.todo.destroy({
-      where: { id, user_id: this.credential.id },
+    const user = await db.user.destroy({
+      where: { id },
     });
 
-    return todo;
+    return user;
   };
 }
 
