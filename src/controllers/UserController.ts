@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import UserService from "../services/UserService";
-class UserController {
+import { IUserController } from "./ControllerInterface";
+class UserController implements IUserController {
   constructor() {}
 
   index = async (req: Request, res: Response): Promise<Response> => {

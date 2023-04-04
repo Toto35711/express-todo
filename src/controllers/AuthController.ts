@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-const db = require("../db/models");
-import Authentication from "../utils/Authentication";
 import AuthService from "../services/AuthService";
-class AuthController {
+import { IAuthController } from "./ControllerInterface";
+class AuthController implements IAuthController {
   constructor() {}
 
   register = async (req: Request, res: Response): Promise<Response> => {

@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
-import { IController } from "./ControllerInterface";
+import { ITodoController } from "./ControllerInterface";
 import TodoService from "../services/TodoService";
-const db = require("../db/models");
 
-class TodoController implements IController {
+class TodoController implements ITodoController {
   constructor() {}
 
   index = async (req: Request, res: Response): Promise<Response> => {
