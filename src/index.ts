@@ -45,5 +45,4 @@ const app: Application = new App().app;
 
 app.listen(port, () => {
   console.log("app is running in port: ", port);
-  // console.log(process.env.DB_HOST, "DB_HOST");
 });
