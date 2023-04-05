@@ -43,7 +43,7 @@ class AuthService {
 
     // check password
     if (!user) {
-      response.statusCode = 401;
+      response.statusCode = 404;
       response.statusMessage = "User is not registered";
       return response;
     }
@@ -54,7 +54,7 @@ class AuthService {
     );
 
     if (!isPasswordCorrect) {
-      response.statusCode = 404;
+      response.statusCode = 401;
       response.statusMessage = "Password is incorrect";
       return response;
     }

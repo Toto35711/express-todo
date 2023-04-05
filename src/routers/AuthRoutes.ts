@@ -40,6 +40,10 @@ class AuthRoutes extends BaseRoutes {
      *     responses:
      *      200:
      *        description: login success
+     *      401:
+     *        description: password is incorrect
+     *      404:
+     *        description: the user is not registered
      */
     this.router.post("/login", validate, AuthController.login);
 
