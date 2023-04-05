@@ -37,7 +37,7 @@ const options: swaggerJsdoc.Options = {
     ],
   },
   servers: [{ url: "http://localhost:8080" }],
-  apis: ["../src/routers/*.ts"],
+  apis: ["src/routers/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
@@ -66,12 +66,6 @@ class App {
       res.send("Hello world!");
     });
 
-    /**
-     * @swagger
-     * users
-     * get:
-     *   description: use to request
-     */
     this.app.use("/api/v1/users", UserRoutes);
     this.app.use("/api/v1/auth", AuthRoutes);
     this.app.use("/api/v1/todos", TodoRoutes);
