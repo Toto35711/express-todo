@@ -5,6 +5,20 @@ import validate from "../middlewares/TodoValidator";
 
 class TodoRoutes extends BaseRoutes {
   public routes(): void {
+    /**
+     * @openapi
+     * /api/v1/todos:
+     *  get:
+     *     tags:
+     *     - Todo
+     *     security:
+     *      - bearerAuth: []
+     *     summary: get all todos
+     *     description: get all todos
+     *     responses:
+     *       200:
+     *         description: get all todos success
+     */
     this.router.get("/", auth, TodoController.index);
     this.router.post("/", auth, validate, TodoController.create);
     this.router.get("/:id", auth, TodoController.show);

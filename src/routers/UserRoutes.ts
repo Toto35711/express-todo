@@ -8,10 +8,11 @@ class UserRoutes extends BaseRoutes {
      *  get:
      *     tags:
      *     - User
+     *     summary: get all users
      *     description: get all users
      *     responses:
      *       200:
-     *         description: all users success
+     *         description: get all users success
      */
     this.router.get("/", UserController.index);
 
@@ -21,6 +22,7 @@ class UserRoutes extends BaseRoutes {
      *  get:
      *     tags:
      *     - User
+     *     summary: get user by ID
      *     description: get user by ID
      *     parameters:
      *      - name: id
@@ -53,7 +55,7 @@ class UserRoutes extends BaseRoutes {
      *              $ref: '#/components/schemas/UpdateUser'
      *     responses:
      *      200:
-     *        description: Success
+     *        description: edit username success
      */
     this.router.put("/:id", UserController.update);
 
@@ -63,6 +65,7 @@ class UserRoutes extends BaseRoutes {
      *  delete:
      *     tags:
      *     - User
+     *     summary: delete a user by ID
      *     description: delete a user by ID
      *     parameters:
      *      - name: id
