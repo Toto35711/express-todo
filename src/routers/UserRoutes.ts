@@ -38,7 +38,7 @@ class UserRoutes extends BaseRoutes {
     /**
      * @openapi
      * /api/v1/users/{id}:
-     *  post:
+     *  put:
      *     tags:
      *     - User
      *     summary: edit username by ID
